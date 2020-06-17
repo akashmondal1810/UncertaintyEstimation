@@ -3,26 +3,25 @@
 		"_col_to_load": "columns important to the target, keep blank for loading all features",
 		"_train_val_eval" : "train val and evaluation split ratio",
 		"_fill_strategy" : "missing value imputation strategy",
-		"_drop_strategy" : "dropping strategy, 1 indicate axis 1(column)",
+		"_drop_strategy" : "dropping strategy, 1 indicate axis 1(column), if set to 0 it will drop rows where it contain NaN value",
 		"_col_to_dummied" : "feature that will be dummied, leave empty to dummy all feature",
 		"_processed_data_PATH" : "path to dump the prosessed data"
 
 	},
 
-	"col_to_load": [],
+	"col_to_load": ["total_pymnt", "annual_inc","int_rate","purpose","dti","term","grade", "loan_amnt", "loan_status",
+           "out_prncp", "out_prncp_inv", "last_pymnt_amnt"],
+    
     "train_val_eval": [],
      
      "fill_strategy": {
-     	"Embarked": "Mode"
      },
 
      "drop_strategy": {
-     	"Age": 1, 
-        "Name": 1,
-    	"Fare": 1,
-    	"Cabin":1
+     	"dti":0,
+        "annual_inc":0
     },
-    "col_to_dummied": ["Pclass", "Sex", "Parch", "Embarked", "Title", "IsAlone"],
+    "col_to_dummied": ["purpose", "loan_status", "grade", "term"],
     "target_col" : "",
     "processed_data_PATH" :""
 

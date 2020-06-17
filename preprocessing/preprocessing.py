@@ -130,8 +130,12 @@ class Preprocess():
         :fill_strategies: strategies of filling missing value e.g. 'Mode', 'Mean', or 'Median' etc.
         :return: the processed dataframe
         """
-        for column, strategy in drop_strategies.items():
-            data=data.drop(labels=[column], axis=strategy)
+        for column in drop_strategies:
+            print(column)
+            if drop_strategies[column]==1:
+                data=data.drop([column], axis=1)
+            if drop_strategies[column]==0:
+                data = data[data[column].notna()]
 
         return data
 
@@ -195,5 +199,3 @@ class Preprocess():
         x_scaled = scaler.fit_transform(x)
 
         return pd.DataFrame(x_scaled, columns = cols)
-
-

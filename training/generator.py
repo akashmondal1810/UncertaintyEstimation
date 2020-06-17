@@ -7,7 +7,7 @@ import pandas as pd
 
 class Generator():
     """
-    Preprocess strategies defined and exected in this class
+    A custom data generator
     """
     def __init__(self, X_data, y_data, batch_size):
         self.X_sample = X_data

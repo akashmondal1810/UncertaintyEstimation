@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -69,3 +66,10 @@ class runPreprocess():
             self.data=self._preprocessor._get_dummies(self.data, prefered_columns=pfcol)
         else:
             self.data=self._preprocessor._get_dummies(self.data, prefered_columns=None)
+        
+        target_col = self.ppc_parameters["target_col"]
+        feature_col = [col for col in self.data.columns if col is not target_col]
+        
+        
+        self.data = self._preprocessor._get_normalized(self.data, feature_col)
+        

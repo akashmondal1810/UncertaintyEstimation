@@ -185,17 +185,12 @@ class Preprocess():
 
         return pd.concat(dummies_data, axis=1)
 
-    def _get_normalized(self, data):
+    def _get_normalized(self, data, norm_col):
 
         """
         For data normalization
         :param data: dataset information will be gathered from
         :return: the processed dataframe
         """
-
-        cols = data.columns
-        x = data.values #returns a numpy array
-        scaler = StandardScaler()
-        x_scaled = scaler.fit_transform(x)
-
-        return pd.DataFrame(x_scaled, columns = cols)
+        data[norm_col] = StandardScaler().fit_transform(data[norm_col])
+        return data

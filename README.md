@@ -12,7 +12,7 @@ UncertaintyEst
 |   ├── preprocessing.json (Stores the strategies required for the preprocessing)
 |   ├── preprocessing.py (Script to deals with the preprocessing of data)
 |   └── pp_runner.py (Helper script to run the proprocessing functions)
-├── Training   
+├── Training(Work in Progress)   
 │   ├── generator.py (Generators script to generate the dataset)
 │   ├── train_bin.py (Script containg constructor for the class implementing of the network architecture)
 │   └── mc_dropout.py (Script for generating the MC Dropout model and making predictions)

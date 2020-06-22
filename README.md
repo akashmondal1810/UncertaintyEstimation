@@ -22,4 +22,6 @@ UncertaintyEst
 ```
 
 ### Setup and Uses
+* run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
+* run `cd UncertaintyEst`
 * run `python train_data.py MNIST` for training and autotuning in the MNIST Data

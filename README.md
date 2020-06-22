@@ -19,3 +19,7 @@ UncertaintyEst
 .
 .
     
+```
+
+### Setup and Uses
+* run `python train_data.py MNIST` for training and autotuning the MNIST Data

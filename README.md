@@ -29,4 +29,4 @@ UncertaintyEst
 
 #### For The loan Dataset
 * Download the loan dataset fron [Here](https://www.kaggle.com/wendykan/lending-club-loan-data)
-* run `python process_data.py loan LOAN_DATA_PATH` for training and autotuning in the loan Data and replace the `LOAN_DATA_PATH` with the downloaded dataset path
+* run `python process_data.py loan LOAN_DATA_PATH` for preprocessing the loan Data and replace the `LOAN_DATA_PATH` with the downloaded dataset path

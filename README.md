@@ -24,4 +24,9 @@ UncertaintyEst
 ### Setup and Uses
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
+#### For MNIST Dataset
 * run `python train_data.py MNIST` for training and autotuning in the MNIST Data
+
+#### For The loan Dataset
+* Download the loan dataset fron [Here](https://www.kaggle.com/wendykan/lending-club-loan-data)
+* run `python process_data.py loan LOAN_DATA_PATH` for training and autotuning in the loan Data and replace the `LOAN_DATA_PATH` with the downloaded dataset path

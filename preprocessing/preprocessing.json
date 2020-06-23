@@ -1,0 +1,30 @@
+{
+	"_comment": {
+		"_col_to_load": "columns important to the target, keep blank for loading all features",
+		"_train_val_eval" : "train val and evaluation split ratio",
+		"_fill_strategy" : "missing value imputation strategy",
+		"_drop_strategy" : "dropping strategy, 1 indicate axis 1(column), if set to 0 it will drop rows where it contain NaN value",
+		"_col_to_dummied" : "feature that will be dummied, leave empty to dummy all feature",
+		"_processed_data_PATH" : "path to dump the prosessed data",
+		"_chunk_size": "number of rows per chunk to load"
+
+	},
+
+	"col_to_load": ["annual_inc","int_rate", "total_pymnt", "purpose","dti","term","grade", "loan_amnt", "loan_status",
+           "out_prncp", "out_prncp_inv", "last_pymnt_amnt"],
+	"chunk_size":300000,
+    
+    "train_val_eval": [],
+     
+     "fill_strategy": {
+     },
+
+     "drop_strategy": {
+     	"dti":0,
+        "annual_inc":0
+    },
+    "col_to_dummied": ["purpose", "grade", "term"],
+    "target_col" : "loan_status",
+    "processed_data_PATH" :""
+
+ }

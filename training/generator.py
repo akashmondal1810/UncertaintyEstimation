@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import numpy as np
 import pandas as pd
 
@@ -15,20 +18,20 @@ class Generator():
         self.batch_size = batch_size
 
     def generate(self):
-	samples_per_epoch = self.X_sample.shape[0]
+    	samples_per_epoch = self.X_sample.shape[0]
     	number_of_batches = samples_per_epoch/self.batch_size
-	
-	counter=0
-	while True:
-		X_batch = self.X_sample[self.batch_size*counter:self.batch_size*(counter+1)]
-	        X_batch = np.array(X_batch).astype('float32')
 
-	        y_batch = self.y_sample[self.batch_size*counter:self.batch_size*(counter+1)]
-	        y_batch = np.array(y_batch).astype('float32')
-	        
-	        counter += 1
-	        yield X_batch,y_batch
-	
-	#restart counter to yeild data in the next epoch as well
-	if counter >= number_of_batches:
-		counter = 0
+    	counter=0
+    	while True:
+    		X_batch = self.X_sample[self.batch_size*counter:self.batch_size*(counter+1)]
+    		X_batch = np.array(X_batch).astype('float32')
+
+    		y_batch = self.y_sample[self.batch_size*counter:self.batch_size*(counter+1)]
+    		y_batch = np.array(y_batch).astype('float32')
+
+    		counter += 1
+    		yield X_batch,y_batch
+
+    	#restart counter to yeild data in the next epoch as well
+    	if counter >= number_of_batches:
+    		counter = 0

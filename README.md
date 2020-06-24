@@ -21,7 +21,7 @@ UncertaintyEst
     
 ```
 
-### Setup and Uses
+### Setup and Usage
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
 #### For MNIST Dataset

@@ -31,5 +31,12 @@ UncertaintyEst
 * On running `python process_data.py data/boston/datasets_Boston.csv data/boston` it will first output the basic information about the dataset in the scrren and after preprocessing it will split and save the data in the given destination as shown below
 ![Selection_069](https://user-images.githubusercontent.com/28530297/85549816-fc471a80-b63d-11ea-8530-4cd407a52aae.png)
 
-#### For MNIST Dataset
-* run `python train_data.py MNIST` for training and autotuning in the MNIST Data
+#### For Training
+* First fill up the different taining strategies in the `autotuning/training_strategy.json`
+* run `python train_data.py DATASET_NAME` for training and aututuning the Dataset and replace the `DATASET_NAME` with the  dataset name like MNIST
+
+#### For Testing
+* run `python test_data.py DATASET_NAME SAVED_MODEL_PATH` for Evaluation of the model. Here replace the `SAVED_MODEL_PATH` with the path where the model have been saved after training and autotuning.
+* On running it will print out different results as shown
+![Selection_070](https://user-images.githubusercontent.com/28530297/85608264-86a97180-b672-11ea-9182-446fbe6d4d9a.png)
+

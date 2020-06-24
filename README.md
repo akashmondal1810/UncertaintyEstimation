@@ -24,9 +24,12 @@ UncertaintyEst
 ### Setup and Usage
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
+
+####For Preprocessing
+* First fill up the different preprocessing strategies in the `preprocessing/preprocessing.json`
+* run `python process_data.py LOAN_DATA_PATH OUTPUT_PATH` for preprocessing the Dataset and replace the `LOAN_DATA_PATH` with the  dataset path
+* On running `python process_data.py data/boston/datasets_Boston.csv data/boston` it will first output the basic information about the dataset in the scrren and after preprocessing it will split and save the data in the given destination
+![Selection_069](https://user-images.githubusercontent.com/28530297/85549816-fc471a80-b63d-11ea-8530-4cd407a52aae.png)
+
 #### For MNIST Dataset
 * run `python train_data.py MNIST` for training and autotuning in the MNIST Data
-
-#### For The loan Dataset
-* Download the loan dataset fron [Here](https://www.kaggle.com/wendykan/lending-club-loan-data)
-* run `python process_data.py loan LOAN_DATA_PATH` for preprocessing the loan Data and replace the `LOAN_DATA_PATH` with the downloaded dataset path

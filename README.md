@@ -38,5 +38,4 @@ UncertaintyEst
 #### For Testing
 * run `python test_data.py DATASET_NAME SAVED_MODEL_PATH` for Evaluation of the model. Here replace the `SAVED_MODEL_PATH` with the path where the model have been saved after training and autotuning.
 * On running it will print out different results as shown
-![Selection_070](https://user-images.githubusercontent.com/28530297/85608264-86a97180-b672-11ea-9182-446fbe6d4d9a.png)
-
+![Selection_071](https://user-images.githubusercontent.com/28530297/85608451-b2c4f280-b672-11ea-8a24-267fdaf6e738.png)

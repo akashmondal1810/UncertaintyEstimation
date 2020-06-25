@@ -13,6 +13,7 @@ Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras
 * Missing value imputation strategy, which includes filling using Mean, Mode, Median, zero
 * Can detect how many columns are to labelencode by finding all the non numeric columns
 * Suppots autometic hyperparameter autotuning
+* Can detect the problem type, 'Regression', 'Classification' or 'Multi class'
 
 ## Setup and Usage
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`

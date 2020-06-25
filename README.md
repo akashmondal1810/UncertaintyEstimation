@@ -1,13 +1,13 @@
 # UncertaintyEst(Work in Progress)
 
 ## Code dependencies
-Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras`, `json`, `multiprocessing` and `matplotlib`. Thse can be installed using `pip install -r dependencies.txt`
+Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras`, `json`, `multiprocessing` and `matplotlib`. These can be installed using `pip install -r dependencies.txt`
 
 ## Future Work
 * Adding the aforementioned dependent modules from source
 * Adding shell script for easy execution
 
-### Setup and Usage
+## Setup and Usage
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
 

@@ -1,0 +1,8 @@
+tensorflow
+numpy
+pandas
+sklearn
+keras
+json
+multiprocessing
+matplotlib

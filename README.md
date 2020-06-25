@@ -7,6 +7,13 @@ Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras
 * Adding the aforementioned dependent modules from source
 * Adding shell script for easy execution
 
+## Features and corner cases
+* Easy Preprocessing
+* Prints basic informations about the dataset
+* Missing value imputation strategy, which includes filling using Mean, Mode, Median, zero
+* Can detect how many columns are to labelencode by finding all the non numeric columns
+* Suppots autometic hyperparameter autotuning
+
 ## Setup and Usage
 * run `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
@@ -25,8 +32,6 @@ Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras
 * run `python test_data.py DATASET_NAME SAVED_MODEL_PATH` for Evaluation of the model. Here replace the `SAVED_MODEL_PATH` with the path where the model have been saved after training and autotuning.
 * On running it will print out different results as shown
 ![Selection_071](https://user-images.githubusercontent.com/28530297/85608451-b2c4f280-b672-11ea-8a24-267fdaf6e738.png)
-
-
 
 ## Code walkthrough
 The [preprocessing](https://github.com/akashmondal1810/UncertaintyEst/tree/master/preprocessing), getting the data ready for the machine learning algorithms, deals with missing data, handling categorical data, bringing features on the same scale, and selecting meaningful features. Different classes have been created for the operations, e.g. ‘Information’, ‘Preprocess’, ‘runPreprocess’, etc. The 'Information' class prints summary information about the data set on the screen like no of rows and features, feature name, data type, size of the dataset, no of missing values in each feature, the memory size of the dataset,  ten samples of each feature, etc. In the 'Preprocess' class The preprocessing of the data set is done using this class. Here the missing values can be filled with None, Zero, column Mode, Mean, and Median values. The drop strategies can be defined to drop both the columns(axis=1) and the rows(axis=0) containing missing values. It also includes label encoders, getting dummy values, etc. And the last class 'runPreprocess', this class created to develop different preprocessing strategies, to run the ‘Preprocessor’ class.

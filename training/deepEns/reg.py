@@ -3,24 +3,14 @@ warnings.filterwarnings("ignore")
 
 import time
 import math
-import math
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.callbacks import EarlyStopping
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
 
-
-METRICS = [
-      tf.keras.metrics.AUC(name='auc'),
-]
-
-
 class DeepArch_reg():
     """
-            Constructor for the class implementing a neural network architecture
-            @param mc             True in case of MC Dropout architecture and False for standard
-                                  nurel network.
-            @param activn_fn      Activation function to be used
+            Constructor for the class implementing a Deep Ensemble architecture
     """
     def __init__(self, X_train,  y_train, X_val, y_val):
         self.X_train = X_train
@@ -28,9 +18,25 @@ class DeepArch_reg():
         self.X_val = X_val
         self.y_val = y_val
         self.mc = False
-        self.activn_fn = 'relu'
+        self.activn_fn = 'tanh'
 
         
+    def gaussian_nll(self, y_true, y_pred):
+        
+        """
+        Gaussian negative log likelihood
+
+        Note: to make training more stable, we optimize
+        a modified loss by having our model predict log(sigma^2)
+        rather than sigma^2. 
+        """
+
+        y_true = tf.reshape(y_true, [-1])
+        mu = y_pred[:, 0]
+        si = y_pred[:, 1]
+        loss = (si + tf.square(y_true - mu)/tf.math.exp(si)) / 2.0
+        return tf.reduce_mean(loss)
+    
     def architecture(self, n_hidden, input_dim, dropout_prob, reg):
         
         """
@@ -54,7 +60,7 @@ class DeepArch_reg():
                               kernel_regularizer=tf.keras.regularizers.l2(reg))(inter)
         
         inter = tf.keras.layers.Dropout(dropout_prob)(inter, training=self.mc)
-        outputs = tf.keras.layers.Dense(1)(inter) 
+        outputs = tf.keras.layers.Dense(2, activation=None)(inter) 
         model = tf.keras.Model(inputs, outputs)
         return model
 
@@ -84,7 +90,7 @@ class DeepArch_reg():
 
         model_mc_dropout = self.architecture(n_hidden=n_hidden, input_dim=input_dim, 
                                         dropout_prob=dropout_prob, reg=reg)
-        model_mc_dropout.compile(optimizer='adam', loss='mse', metrics=['mae'])
+        model_mc_dropout.compile(optimizer='adam', loss=self.gaussian_nll, metrics=['mean_squared_error'])
         
         
         # Iterate the learning process
@@ -96,6 +102,7 @@ class DeepArch_reg():
             epochs=n_epochs,
             verbose=1,
             validation_data=(self.X_val, self.y_val),
+            callbacks=[es]
         )
         
         self.running_time = time.time() - start_time

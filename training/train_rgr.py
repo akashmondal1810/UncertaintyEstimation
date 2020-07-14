@@ -1,12 +1,21 @@
 import warnings
 warnings.filterwarnings("ignore")
+
 from training.generator import Generator
+
 
 import time
 import math
 import multiprocessing #to use all the system cpu cores
-import math
 import numpy as np
+import tensorflow as tf
+
+
+from keras.regularizers import l2
+from keras import Input
+from keras.layers import Dropout
+from keras.layers import Dense
+from keras import Model
 import tensorflow as tf
 
 
@@ -34,19 +43,15 @@ class NNDropout_rgr():
                                   network.
         """
         
-        inputs = tf.keras.layers.Input(shape=(input_dim,))
-        inter = tf.keras.layers.Dropout(dropout_prob)(inputs, training=self.mc)
-        inter = tf.keras.layers.Dense(n_hidden[0], activation=self.activn_fn, 
-                          kernel_regularizer=tf.keras.regularizers.l2(reg))(inter)
-            
+        inputs = Input(shape=(input_dim,))
+        inter = Dropout(dropout_prob)(inputs, training=self.mc)
+        inter = Dense(n_hidden[0], activation=self.activn_fn, W_regularizer=l2(reg))(inter)
         for i in range(len(n_hidden) - 1):
-            inter = tf.keras.layers.Dropout(dropout_prob)(inter, training=self.mc)
-            inter = tf.keras.layers.Dense(n_hidden[i+1], activation=self.activn_fn,
-                              kernel_regularizer=tf.keras.regularizers.l2(reg))(inter)
-        
-        inter = tf.keras.layers.Dropout(dropout_prob)(inter, training=self.mc)
-        outputs = tf.keras.layers.Dense(1, kernel_regularizer=tf.keras.regularizers.l2(reg))(inter) 
-        model = tf.keras.Model(inputs, outputs)
+            inter = Dropout(dropout_prob)(inter, training=self.mc)
+            inter = Dense(n_hidden[i+1], activation=self.activn_fn, W_regularizer=l2(reg))(inter)
+        inter = Dropout(dropout_prob)(inter, training=self.mc)
+        outputs = Dense(1, W_regularizer=l2(reg))(inter)
+        model = Model(inputs, outputs)
         return model
 
     def model_runner(self, X_train, y_train, dropout_prob=0.10, n_epochs=10, tau=1.0, batch_size=1024, 

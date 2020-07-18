@@ -1,5 +1,5 @@
 # UncertaintyEst
-Uncertainty estimation tool, and effective descision making tool in uncertain dataset segments
+Uncertainty estimation and effective descision making tool in uncertain dataset segments
 
 ## Features and corner cases
 * Easy Preprocessing

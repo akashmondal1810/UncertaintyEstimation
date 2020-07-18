@@ -44,3 +44,9 @@ Copy the repo to your local machine by
     * `-edr` the dataset you want to evaluate, in this case `data/uncetainSeg1.csv`
     * `-esd` csv path to save the results
 * Evaluate downloaded data by running `python Evaluation.py -edr data/uncetainSeg1.csv -esd results.csv`
+
+## Results
+Models | XGBoost | MC Dropout | Deep Ensemble 
+--- | --- | --- | --- 
+Uncertain Seg1 | 60.2 | 68.4 | 77.2
+Uncertain Seg1 | 81.3 | 82.6 | 90.7 

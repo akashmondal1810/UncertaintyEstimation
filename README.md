@@ -46,6 +46,8 @@ Copy the repo to your local machine by
 * Evaluate downloaded data by running `python Evaluation.py -edr data/uncetainSeg1.csv -esd results.csv`
 
 ## Results
+AUC Score in Uncertain segments listed below. Here the MC Dropout and the Deep Ensemble model scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
+
 Models | XGBoost | MC Dropout | Deep Ensemble 
 --- | --- | --- | --- 
 Uncertain Seg1 | 60.2 | 68.4 | 77.2

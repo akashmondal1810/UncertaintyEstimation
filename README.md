@@ -1,11 +1,22 @@
-# UncertaintyEst(Work in Progress)
+# UncertaintyEst
+Uncertainty estimation tool, and effective descision making tool in uncertain dataset segments
 
-## Code dependencies
-Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras`, `json`, `multiprocessing` and `matplotlib`. These can be installed using `pip install -r dependencies.txt`
+## Getting Started
+Copy the repo to your local machine by
+* running `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
+* run `cd UncertaintyEst
 
-## Future Work
-* Adding the aforementioned dependent modules from source
-* Adding shell script for easy execution
+#### Prerequisites
+* Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras`, `json`, `multiprocessing` and `matplotlib`. These can be installed using `pip install -r dependencies.txt`
+* Download the datasets in the `data` folder OR use your own data
+
+#### Training
+* Training arguments
+    * simply run ***python train_data.py -h*** for diffrent arguments
+    
+
+```
+* Tain the downloaded data by running `python train_data.py -dr data/dev1.csv -tc class_type -nh 500 1000 800 -e 4 -bts 1024 -dp 0.5 -tu 0.5`
 
 ## Features and corner cases
 * Easy Preprocessing

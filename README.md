@@ -23,20 +23,20 @@ Copy the repo to your local machine by
 #### Training
 * Training arguments
     * simply run `python train_data.py -h` for the help with diffrent traing arguments
-    * `-dr` the devlopement(Training) dataset path, in this case `data/dev1.csv`
+    * `-dr` the devlopement(Training) dataset path, in this case `data/dev.csv`
     * `-tc` target column name, in this case `class_type`
     * `-nh` nodes in each hidden layers, here `500 1000 800` means three hidden layers with nodes 500, 1000 and 800
     * `-e` no of training epochs
     * `-bts` batch size
     * `-dp` the dropout rate
     * `-tu` the tau value
-* Train the downloaded data by running `python train_data.py -dr data/dev1.csv -tc class_type -nh 500 1000 800 -e 4 -bts 1024 -dp 0.5 -tu 0.5`
+* Train the downloaded data by running `python train_data.py -dr data/dev.csv -tc class_type -nh 500 1000 800 -e 4 -bts 1024 -dp 0.5 -tu 0.5`
 
 #### Finding the Cutoff value
 * Arguments used for finding the uncertainty threshold:
     * simply run `python findCutoff.py -h` for the help with diffrent arguments neede
-    * `-vdr` the validation data path, in this case `data/val.csv`
-* Find the cutoff value in the downloaded data by running `python findCutoff.py -vdr data/val1.csv`
+    * `-vdr` the validation data path, in this case `data/va.csv`
+* Find the cutoff value in the downloaded data by running `python findCutoff.py -vdr data/val.csv`
 
 #### Evaluation
 * Arguments used for the evaluation process:

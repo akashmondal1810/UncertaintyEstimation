@@ -43,7 +43,7 @@ Copy the repo to your local machine by
     * `-esd` csv path to save the results
 
 ## Results
-We tested our system in two Uncertain segments, the8/9 AUC Score in listed below. Here the MC Dropout and the Deep Ensemble model scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
+We tested our system in two Uncertain segments, the AUC Score in listed below. Here the MC Dropout and the Deep Ensemble model scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 
 Models | XGBoost | MC Dropout | Deep Ensemble 
 --- | --- | --- | --- 

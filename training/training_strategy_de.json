@@ -1,0 +1,1 @@
+{"hidden_units": [800, 1200, 700, 100], "n_epochs": 4, "batch_size": 1024, "tergetCol": "profit_rate", "cutoff": 1.006052017211914}

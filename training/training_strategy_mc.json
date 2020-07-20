@@ -1,0 +1,1 @@
+{"dropout_rates": 0.2, "tau": 0.4, "hidden_units": [800, 1200, 700, 100], "n_epochs": 3, "batch_size": 1024, "tergetCol": "profit_rate"}

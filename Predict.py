@@ -11,30 +11,29 @@ import matplotlib.pyplot as plt
 parser=argparse.ArgumentParser()
 
 parser.add_argument('--algo', '-alg', required=True, help='Algorith to be used')
-parser.add_argument('--evalDataDir', '-edr', required=True, help='Dataset path for Evaluation')
-parser.add_argument('--evalSaveDir', '-esd', required=True, help='file name to save the results')
+parser.add_argument('--predDataDir', '-pdr', required=True, help='Dataset path for predictions')
+parser.add_argument('--predSaveDir', '-psd', required=True, help='file name to save the results')
 
 args=parser.parse_args()
 
 algo = args.algo
-data_directory = args.evalDataDir
-save_directory = args.evalSaveDir
+data_directory = args.predDataDir
+save_directory = args.predSaveDir
 
-class MCDEval_bin():
+class MCDpred():
     
-    def __init__(self, model_PATH, X_test, y_test, batch_size):
+    def __init__(self, model_PATH, X_test, batch_size):
         print('Loading the saved model..')
         self.model = load_model(model_PATH)
         self.X_test = X_test
-        self.y_test = y_test
         self.batch_size = batch_size
         self.pm = None
         self.pv = None
         
         
-    def find_mv(self, T_val=100):
+    def find_mv(self):
         probs_mc_dropout = []
-        T = T_val
+        T = 100
         print('predicting for Evaluation...')
         for t_i in range(T):
             print('sch round::', t_i)
@@ -44,50 +43,26 @@ class MCDEval_bin():
         self.pm = predictive_mean
         self.pv = predictive_variance
 
-    def prdct(self, mn, var, cutoff):
-        if var>cutoff:
-            return 'Uncertain'
-        return int(round(mn))
 
-    def eval(self, outpth, cutoff):
+    def predictions(self, outpth):
         self.find_mv()
-        df = pd.DataFrame(
-             {'mean': self.pm,
-              'variance': self.pv,
-              'y_true': self.y_test
-             })
-        
-        dfval = df.loc[df['variance'] <cutoff]
-        fpr, tpr, _ = roc_curve(dfval['y_true'], dfval['mean'])
-        model_auc = np.round(auc(fpr, tpr), 4)
 
-        # visualization
-        fig, ax = plt.subplots(figsize=(8, 6))
-        ax.plot(fpr, tpr, label='AUC: ' + str(model_auc))
-        ax.plot(fpr, fpr, 'k:')
-        ax.set_xlabel('False Positive Rate', fontsize=12)
-        ax.set_ylabel('True Positive Rate', fontsize=12)
-        ax.legend(fontsize=12)
-        ax.grid(True)
-        plt.tight_layout()
-        plt.show()
-
-        df['prediction']=[self.prdct(p, v, cutoff) for p, v in zip(df['mean'], df['variance'])]
-        df.to_csv(outpth, encoding='utf-8', index=False)
+        self.X_test['prediction']= self.pm
+        self.X_test['uncertainty']= self.pv
+        self.X_test.to_csv(outpth, encoding='utf-8', index=False)
         print('Results saved at::', outpth)
 
 
-class DeepEnsmbEval_bin():
+class DeepEnsmbPred():
     
-    def __init__(self, X_test, y_test, batch_size):
+    def __init__(self, X_test, batch_size):
         print('Loading the saved model..')
         self.models = []
 
         for i in range(5):
-        	self.models.append('trained_models/DEnsmb_trained_'+str(i)+'.h5')
+        	self.models.append('trained_models/DEnsmb_trained_reg_'+str(i)+'.h5')
         self.models = [load_model(mp, custom_objects={'gaussian_nll': self.gaussian_nll}) for mp in self.models]
         self.X_test = X_test
-        self.y_test = y_test
         self.batch_size = batch_size
 
 
@@ -121,7 +96,7 @@ class DeepEnsmbEval_bin():
 	    si_arr = []
 
 	    for model in self.models:
-	        y_pred = model.predict(x)
+	        y_pred = model.predict(x, verbose=1)
 	        mu = y_pred[:, 0]
 	        si = y_pred[:, 1]
 
@@ -137,37 +112,13 @@ class DeepEnsmbEval_bin():
 	    y_std = np.sqrt(y_variance)
 	    return y_mean, y_std, y_variance
 
-    def prdct(self, mn, var, cutoff):
-        if var>cutoff:
-            return 'Uncertain'
-        return int(round(mn))
-
-    def eval(self, outpth, cutoff):
+    def predictions(self, outpth):
         yhat_mean, yhat_std, predictive_variance = self.predict(self.X_test)
-        df = pd.DataFrame(
-             {'mean': yhat_mean,
-              'variance': predictive_variance,
-              'y_true': self.y_test
-             })
-        
-        dfval = df.loc[df['variance'] <cutoff]
-        print(dfval)
-        fpr, tpr, _ = roc_curve(dfval['y_true'], dfval['mean'])
-        model_auc = np.round(auc(fpr, tpr), 4)
+   
 
-        # visualization
-        fig, ax = plt.subplots(figsize=(8, 6))
-        ax.plot(fpr, tpr, label='AUC: ' + str(model_auc))
-        ax.plot(fpr, fpr, 'k:')
-        ax.set_xlabel('False Positive Rate', fontsize=12)
-        ax.set_ylabel('True Positive Rate', fontsize=12)
-        ax.legend(fontsize=12)
-        ax.grid(True)
-        plt.tight_layout()
-        plt.show()
-
-        df['prediction']=[self.prdct(p, v, cutoff) for p, v in zip(df['mean'], df['variance'])]
-        df.to_csv(outpth, encoding='utf-8', index=False)
+        self.X_test['prediction']= yhat_mean
+        self.X_test['uncertainty']= predictive_variance
+        self.X_test.to_csv(outpth, encoding='utf-8', index=False)
         print('Results saved at::', outpth)
         
         #return self.ll, auc_score, self.tpr, self.fpr, classification_report(y_test, predictions)
@@ -178,9 +129,9 @@ if __name__ == '__main__':
 
 		print('Reading data..')
 		val_data = pd.read_csv(data_directory)
-		y_val = val_data[param['tergetCol']]
-		X_val = val_data.drop([param['tergetCol']], 1)
-		mdl = MCDEval_bin('MC_Dropout_trained.h5', X_val, y_val, param['batch_size']).eval(save_directory, param['cutoff'])
+		#y_val = val_data[param['tergetCol']]
+		#X_val = val_data.drop([param['tergetCol']], 1)
+		mdl = MCDpred('MC_Dropout_trained_reg.h5', val_data, param['batch_size']).predictions(save_directory)
 
 	if algo=='DeepEnsmb':
 		with open('training/training_strategy_de.json') as f:
@@ -188,7 +139,7 @@ if __name__ == '__main__':
 
 		print('Reading data..')
 		val_data = pd.read_csv(data_directory)
-		y_val = val_data[param['tergetCol']]
-		X_val = val_data.drop([param['tergetCol']], 1)
+		#y_val = val_data[param['tergetCol']]
+		#X_val = val_data.drop([param['tergetCol']], 1)
 
-		mdl = DeepEnsmbEval_bin(X_val, y_val, param['batch_size']).eval(save_directory, param['cutoff'])
+		mdl = DeepEnsmbPred(val_data, param['batch_size']).predictions(save_directory)

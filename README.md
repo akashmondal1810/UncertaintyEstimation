@@ -13,8 +13,6 @@ Uncertainty estimation and effective descision making tool in uncertain dataset 
 Copy the repo to your local machine by
 * running `git clone https://github.com/akashmondal1810/UncertaintyEst.git`
 * run `cd UncertaintyEst`
-* Download the data by clicking in the [link](https://docs.google.com/u/0/uc?export=download&confirm=KW-f&id=16lUGsUKRU2EJNKYpo6Qrvjzm7g2-UrfZ) or by running 
-`curl -O https://docs.google.com/u/0/uc?export=download&confirm=KW-f&id=16lUGsUKRU2EJNKYpo6Qrvjzm7g2-UrfZ` and extract it in the `data` folder
 
 #### Prerequisites
 * Module used in this repo are, `tensorflow`, `numpy`, `pandas`, `sklearn`, `keras`, `json`, `multiprocessing` and `matplotlib`. These can be installed using `pip install -r dependencies.txt`

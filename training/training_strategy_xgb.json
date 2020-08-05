@@ -1,0 +1,8 @@
+{
+"subsample": [800, 1200, 700, 100],
+ "colsample": [800, 1200, 700, 100], 
+"learning_rate": 0.1, 
+"nes":500,
+"max_depth":5,
+"min_child_weight":5
+}

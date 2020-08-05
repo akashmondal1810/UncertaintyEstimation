@@ -1,0 +1,1 @@
+{"max_depth": 6, "eta": 0.1, "objective": "binary:logistic", "min_child_weight": 5, "subsample": 0.7, "colsample_bytree": 0.8, "scale_pos_weight": 15, "tergetCol": "class_type"}

@@ -29,23 +29,24 @@ Copy the repo to your local machine by
     * `-tc` target column name
     * It will train using the default value, you can train using other parameters mentioned in the training_strategy files inside training folder
 
-#### Finding the Cutoff value
-* Arguments used for finding the uncertainty threshold:
-    * simply run `python findCutoff.py -h` for the help with diffrent arguments neede
-    * `--algo` the model you want to find the cutoff, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble
-    * `-vdr` the validation data path
-
 #### Evaluation
 * Arguments used for the evaluation process:
-    * simply run `python Evaluation.py -h` for the help with diffrent arguments neede
-    * `--algo` the model you want to evaluate, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble, `RandomXGB` for random XGBoost
+    * simply run `python Evaluation.py -h` for the help with diffrent arguments needed
+    * `--algo` the model you want to evaluate, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble, `RandomXGB` for random XGBoost and `RandomXGB` for random XGBoost
     * `-edr` the dataset you want to evaluate
     * `-esd` csv path to save the results
+    
+#### Prediction
+* Arguments used for prediction:
+    * simply run `python Predict.py -h` for the help with diffrent arguments needed
+    * `--algo` the model you want to evaluate, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble, `RandomXGB` for random XGBoost and `RandomXGB` for random XGBoost
+    * `-pdr` Dataset path for predictions
+    * `-psd` csv path to save the results
 
 ## Results
-We tested our system in two Uncertain segments, the AUC Score in listed below. Here the MC Dropout and the Deep Ensemble model scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
+We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 
-Models | XGBoost | MC Dropout | Deep Ensemble 
+Models | XGBoost | MC Dropout | Deep Ensemble | Multi XGB | Random XGB
 --- | --- | --- | --- 
-Uncertain Seg1(From 20Q1) | 60.2 | 68.4 | 77.2
-Uncertain Seg1(Low FICO<500) | 81.3 | 82.6 | 90.7 
+Uncertain Seg1(From 20Q1) | 60.2 | 68.4 | 77.2 | 81.8 | 72.3
+Uncertain Seg1(Low FICO<500) | 81.3 | 83.8 | 91.9 | 86.5 | 79.3

@@ -47,6 +47,6 @@ Copy the repo to your local machine by
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 
 Models | XGBoost | MC Dropout | Deep Ensemble | Multi XGB | Random XGB
---- | --- | --- | --- 
+--- | --- | --- | --- | --- | --- 
 Uncertain Seg1(From 20Q1) | 60.2 | 68.4 | 77.2 | 81.8 | 72.3
 Uncertain Seg1(Low FICO<500) | 81.3 | 83.8 | 91.9 | 86.5 | 79.3

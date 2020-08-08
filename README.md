@@ -24,7 +24,7 @@ Copy the repo to your local machine by
 #### Training
 * Training arguments
     * simply run `python train_data.py -h` for the help with diffrent traing arguments
-    * `--algo` the model you want to train, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble
+    * `--algo` the model you want to train, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble, `MultiXGB` for multiple XGBoost and `RandomXGB` for random XGBoost
     * `-dr` the devlopement(Training) dataset path
     * `-tc` target column name
     * It will train using the default value, you can train using other parameters mentioned in the training_strategy files inside training folder
@@ -38,7 +38,7 @@ Copy the repo to your local machine by
 #### Evaluation
 * Arguments used for the evaluation process:
     * simply run `python Evaluation.py -h` for the help with diffrent arguments neede
-    * `--algo` the model you want to evaluate, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble
+    * `--algo` the model you want to evaluate, `MCD` for MC Dropout, `DeepEnsmb` for Deep Ensemble, `RandomXGB` for random XGBoost
     * `-edr` the dataset you want to evaluate
     * `-esd` csv path to save the results
 

@@ -1,13 +1,19 @@
 # UncertaintyEst
-Uncertainty estimation and effective descision making tool in uncertain dataset segments
+Deterministic point prediction models like Deep neural networks, Gradient Boosting algorithm have achieved state-of-the-art performance on a wide variety of machine learning tasks, and are becoming increasingly popular in domains such as computer vision, speech recognition, natural language processing, and in Credit Risk Analysis related decisions. Despite impressive accuracies in supervised learning benchmarks, these are poor at quantifying predictive
+uncertainty, and tend to produce overconfident predictions. Overconfident incorrect predictions can be harmful, hence proper uncertainty quantification is crucial for practical applications. But, while these deterministic models often achieve high accuracy, their predictions have been shown to be miscalibrated and shown to yield arbitrarily high confidence far away from the training data. This means these models are susceptible to out-of-distribution (OOD or Uncertain)examples. So, when these classifiers are employed in real-world tasks, they tend to fail when the training and test distributions differ. Worse, these classifiers often fail silently by providing high confidence predictions while being woefully incorrect. These highconfidence predictions are frequently produced by softmax
+because softmax probabilities are computed with the fast-growing exponential function. Thus minor additions to the softmax inputs, i.e. the logits, can lead to substantial .changes in the output distribution.  Meanwhile, probabilistic methods (in particular Bayesian methods) have long been known to improve predictive uncertainty estimates and have been empirically demonstrated to capture these falsely overconfident points by using the predictive uncertainty. Some orks like MacKay et. al. demonstrated experimentally that the predictive uncertainty of Bayesian neural networks will naturally be high in regions not covered by training data. Although the theoretical analysis of such Bayesian approximations are limited and currently a reviving field, we attempted to show that uncertainty is
+not only something that places obstacles in front of good predictions, we can indeed benefit from it, if we are able to estimate it.
+In this context, our contributions are two-fold. The first is uncertainty quantification: we calculate the predictive
+uncertainty involved while estimating the model prediction; The second is to utilize the predictive uncertainty: to use this predictive uncertainty value in
+decision making when the test example is from a different distribution (Uncertain Data Segment) from the training data;
+We also introduced two novel methods to mine the model uncertainty using Gradient Boosting methods. To experimentally validate our methods, we evaluate it on the Lending Club loan dataset.
 
-## Features and corner cases
-* Easy Preprocessing
-* Prints basic informations about the dataset
-* Missing value imputation strategy, which includes filling using Mean, Mode, Median, zero
-* Can detect how many columns are to labelencode by finding all the non numeric columns
-* Suppots autometic hyperparameter autotuning
-* Can detect the problem type, 'Regression', 'Classification' or 'Multi class'
+## Features
+* Predictive uncertainty estimation using Monte Carlo Dropout(`MCD`)
+* Predictive uncertainty estimation using Deep Ensemble(`DeepEnsmb`)
+* Predictive uncertainty estimation using multiple XGBoost(Novel Method, `MultiXGB`)
+* Predictive uncertainty estimation using Random XGBoost(Novel Method, `RandomXGB`)
+* We also utilized the predictive uncertainty in the decision making process
 
 ## Getting Started
 Copy the repo to your local machine by

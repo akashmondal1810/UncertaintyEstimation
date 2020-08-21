@@ -49,6 +49,13 @@ Copy the repo to your local machine by
     * `-pdr` Dataset path for predictions
     * `-psd` csv path to save the results
 
+## Dataset
+To experimentally validate our methods, we have used the [Lending Club loan](https://www.lendingclub.com/statistics/additional-statistics) dataset. Lending Club is a peer-to-peer lending company, the largest of its kind in the world. It is an online lending platform where borrowers are able to obtain loans and investors
+can purchase notes backed by payments based on loans. The dataset contains complete loan data for all loans issued by lendingclub.com from 2007-2020, including the current loan status (Current, Charged Off, Fully Paid, etc.) and latest payment information.
+Also we define a profit column in the existing data, containing the profit rate of each loan by taking the percentage difference between total payment (payments received to date for total amount funded) and the loan amount(total amount funded). As we will be exploring both the regression and classification, so we define
+a target variable for the classification setup class type which is the positive/negative profit in each class, i.e. if the profit rate is positive, means the overall loan is a good loan and if the profit rate is negative, means the overall loan is a bad loan from the conservative investor’s standpoint. We will use this
+field as the target label in classification setting and the profit rate for regression setting.
+
 ## Results
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 

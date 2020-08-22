@@ -6,7 +6,7 @@ not only something that places obstacles in front of good predictions, we can in
 In this context, our contributions are two-fold. The first is uncertainty quantification: we calculate the predictive
 uncertainty involved while estimating the model prediction; The second is to utilize the predictive uncertainty: to use this predictive uncertainty value in
 decision making when the test example is from a different distribution (Uncertain Data Segment) from the training data;
-We also introduced two novel methods to mine the model uncertainty using Gradient Boosting methods. To experimentally validate our methods, we evaluate it on the Lending Club loan dataset.
+We also introduced two novel methods to mine the model uncertainty using Gradient Boosting methods. To experimentally validate our methods, we evaluate it on the Lending Club loan dataset. More about the methodology can be found [here](https://drive.google.com/file/d/1jsuLeRvI9GkT-hxrV6cGqGgGVLuY6Bf1/view?usp=sharing).
 
 ## Features
 * Predictive uncertainty estimation using Monte Carlo Dropout(`MCD`)
@@ -63,3 +63,7 @@ Models | XGBoost | MC Dropout | Deep Ensemble | Multi XGB | Random XGB
 --- | --- | --- | --- | --- | --- 
 Uncertain Seg1(From 20Q1) | 60.2 | 68.4 | 77.2 | 81.8 | 72.3
 Uncertain Seg1(Low FICO<500) | 81.3 | 83.8 | 91.9 | 86.5 | 79.3
+
+## Future Works
+* Making the tool scaleable
+* To utilize the predictive uncertainty in other better way while decision making

@@ -56,6 +56,8 @@ Also we define a profit column in the existing data, containing the profit rate 
 a target variable for the classification setup class type which is the positive/negative profit in each class, i.e. if the profit rate is positive, means the overall loan is a good loan and if the profit rate is negative, means the overall loan is a bad loan from the conservative investor’s standpoint. We will use this
 field as the target label in classification setting and the profit rate for regression setting.
 
+For our segment of intreset, the out of distribution or the uncertain segment, we have the data from 2020 quarter1 which include new types of loans like issued which is not present in the development data and also the shift in the distribution due to the global pandemic, COVID-19 situtation. The other uncertain segment is the loans with low FICO(FICO<500) values are considered. As the FICO score are below 500(which are in the range of below 579), hence these scores fall in the poor Score Ranges, and bad credit means higher risk hence higher uncertainty.
+
 ## Results
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 

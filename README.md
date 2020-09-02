@@ -69,3 +69,13 @@ Uncertain Seg1(Low FICO<500) | 81.3 | 83.8 | 91.9 | 86.5 | 79.3
 ## Future Works
 * Making the tool scaleable
 * To utilize the predictive uncertainty in other better way while decision making
+
+## References
+* Y. Gal and Z. Ghahramani. Dropout as a Bayesian approximation: Representing model uncertainty in deep learning. In ICML, 2016
+* J. M. Hernandez-Lobato and R. Adams, “Probabilistic backpropagation for scalable learning of bayesian neural networks,” in International Conference on Machine Learning, 2015, pp. 1861–1869
+* https://www.lendingclub.com/statistics/additional-statistics
+* https://xgboost.readthedocs.io/en/latest/python/index.html
+* Balaji Lakshminarayanan, Alexander Pritzel, Charles Blundell ”Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles”
+* Dan Hendrycks, Kevin Gimpel, ”A Baeline for detecting misclassified and out-of-distribution examples in neural network”
+* Kendall, A. and Gal, Y. (2017). “What uncertainties do we need in Bayesian deep learning for computer vision?”
+* https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/

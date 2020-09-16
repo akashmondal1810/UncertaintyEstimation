@@ -59,6 +59,22 @@ field as the target label in classification setting and the profit rate for regr
 For our segment of intreset, the out of distribution or the uncertain segment, we have the data from 2020 quarter1 which include new types of loans like issued which is not present in the development data and also the shift in the distribution due to the global pandemic, COVID-19 situtation. The other uncertain segment is the loans with low FICO(FICO<500) values are considered. As the FICO score are below 500(which are in the range of below 579), hence these scores fall in the poor Score Ranges, and bad credit means higher risk hence higher uncertainty.
 
 ## Results
+#### Standard Datasets
+A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
+
+Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout
+--- | :---: | :---: | :---: | :---:
+Boston Housing      | -2.41 ± 0.25 | 18.466 ± 2.86 | 5.37 ± 0.32 | -2.40 ± 0.04
+Concrete Strength   | -3.06 ± 0.18 | 18.35 ± 2.38 | 6.21 ± 0.13 | -2.93 ± 0.02
+Energy Efficiency   | -1.38 ± 0.22 | 160.23 ± 43.47 | 5.27 ± 0.09 | -1.21 ± 0.01
+Kin8nm              | 1.20 ± 0.02 | 23.16 ± 1.15 | 0.46 ± 0.09 | 1.14 ± 0.01
+Naval Propulsion    | 5.63 ± 0.05 | 9388.7 ± 2100 | 0.58 ± 0.01 | 4.45 ± 0.00
+Power Plant         | -2.79 ± 0.04 | 22302.6 ± 1272.14 | 11.46 ± 0.01 | -2.80 ± 0.01
+Protein Structure   | -2.83 ± 0.02 | 21.6 ± 0.75 | 4.43 ± 0.19 | -2.87 ± 0.00
+Wine Quality Red    | -0.94 ± 0.12 | 83.52 ± 10.86 | 3.30 ± 1.32 | -0.93 ± 0.01
+Yacht Hydrodynamics | -1.18 ± 0.21 | 5.06 ± 3.67 | 8.96 ± 19.08 | -1.25 ± 0.01
+
+#### The Loan Datasets
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
 
 Models | XGBoost | MC Dropout | Deep Ensemble | Multi XGB | Random XGB

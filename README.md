@@ -61,6 +61,7 @@ For our segment of intreset, the out of distribution or the uncertain segment, w
 ## Results
 #### Standard Datasets
 A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
+Re-generate the results using the scripts from the `Experiment` directory
 
 Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout
 --- | :---: | :---: | :---: | :---:

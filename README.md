@@ -60,20 +60,28 @@ For our segment of intreset, the out of distribution or the uncertain segment, w
 
 ## Results
 #### Standard Datasets
-A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
-Re-generate the results using the scripts from the `Experiment` directory
+
+We have used the identical setup as used by Gal and Ghahramani to evaluate MC-dropout. Each dataset is split into 20 train-test folds,
+except for the protein dataset which uses 5 folds and the Year Prediction MSD dataset which uses
+a single train-test split.  A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
+To Re-generate the results use the scripts from the `Experiment` directory.
 
 Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout
 --- | :---: | :---: | :---: | :---:
-Boston Housing      | -2.41 ± 0.25 | 18.466 ± 2.86 | 5.37 ± 0.32 | -2.40 ± 0.04
-Concrete Strength   | -3.06 ± 0.18 | 18.35 ± 2.38 | 6.21 ± 0.13 | -2.93 ± 0.02
-Energy Efficiency   | -1.38 ± 0.22 | 160.23 ± 43.47 | 5.27 ± 0.09 | -1.21 ± 0.01
+Boston Housing      | -2.41 ± 0.25 | -4.22 ± 0.8 | 5.37 ± 0.32 | -2.40 ± 0.04
+Concrete Strength   | -3.06 ± 0.18 | -8.32 ± 1.48 | 6.21 ± 0.13 | -2.93 ± 0.02
+Energy Efficiency   | -1.38 ± 0.22 | -3.15 ± 1.54 | 5.27 ± 0.09 | -1.21 ± 0.01
 Kin8nm              | 1.20 ± 0.02 | 23.16 ± 1.15 | 0.46 ± 0.09 | 1.14 ± 0.01
-Naval Propulsion    | 5.63 ± 0.05 | 9388.7 ± 2100 | 0.58 ± 0.01 | 4.45 ± 0.00
-Power Plant         | -2.79 ± 0.04 | 22302.6 ± 1272.14 | 11.46 ± 0.01 | -2.80 ± 0.01
+Naval Propulsion    | 5.63 ± 0.05 | -2.66 ± 1.55 | 0.58 ± 0.01 | 4.45 ± 0.00
+Power Plant         | -2.79 ± 0.04 | -24.10 ± 2.57 | 11.46 ± 0.01 | -2.80 ± 0.01
 Protein Structure   | -2.83 ± 0.02 | 21.6 ± 0.75 | 4.43 ± 0.19 | -2.87 ± 0.00
 Wine Quality Red    | -0.94 ± 0.12 | 83.52 ± 10.86 | 3.30 ± 1.32 | -0.93 ± 0.01
 Yacht Hydrodynamics | -1.18 ± 0.21 | 5.06 ± 3.67 | 8.96 ± 19.08 | -1.25 ± 0.01
+
+We observe that our method is very close (or is competitive with) existing methods in terms of LL.
+On some datasets, we observe that our method is slightly worse in terms of LL. We believe that
+this is due to the fact that our method is not optimizes for LL (which captures predictive uncertainty)
+instead of other optimization function like MSE, MAE etc.
 
 #### The Loan Datasets
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.

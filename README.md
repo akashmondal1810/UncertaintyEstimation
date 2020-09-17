@@ -62,8 +62,7 @@ For our segment of intreset, the out of distribution or the uncertain segment, w
 #### Standard Datasets
 
 We have used the identical setup as used by Gal and Ghahramani to evaluate MC-dropout. Each dataset is split into 20 train-test folds,
-except for the protein dataset which uses 5 folds and the Year Prediction MSD dataset which uses
-a single train-test split.  A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
+except for the protein dataset which uses 5 folds. A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
 To Re-generate the results use the scripts from the `Experiment` directory.
 
 Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout

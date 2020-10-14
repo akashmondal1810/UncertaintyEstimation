@@ -1,4 +1,4 @@
-# UncertaintyEst
+# UncertaintyEstimation
 Deterministic point prediction models like Deep neural networks, Gradient Boosting algorithm have achieved state-of-the-art performance on a wide variety of machine learning tasks, and are becoming increasingly popular in domains such as computer vision, speech recognition, natural language processing, and in Credit Risk Analysis related decisions. Despite impressive accuracies in supervised learning benchmarks, these are poor at quantifying predictive
 uncertainty, and tend to produce overconfident predictions. Overconfident incorrect predictions can be harmful, hence proper uncertainty quantification is crucial for practical applications. But, while these deterministic models often achieve high accuracy, their predictions have been shown to be miscalibrated and shown to yield arbitrarily high confidence far away from the training data. This means these models are susceptible to out-of-distribution (OOD or Uncertain)examples. So, when these classifiers are employed in real-world tasks, they tend to fail when the training and test distributions differ. Worse, these classifiers often fail silently by providing high confidence predictions while being woefully incorrect. These high confidence predictions are frequently produced by softmax
 because softmax probabilities are computed with the fast-growing exponential function. Thus minor additions to the softmax inputs, i.e. the logits, can lead to substantial changes in the output distribution.  Meanwhile, probabilistic methods (in particular Bayesian methods) have long been known to improve predictive uncertainty estimates and have been empirically demonstrated to capture these falsely overconfident points by using the predictive uncertainty. Some orks like MacKay et. al. demonstrated experimentally that the predictive uncertainty of Bayesian neural networks will naturally be high in regions not covered by training data. Although the theoretical analysis of such Bayesian approximations are limited and currently a reviving field, we attempted to show that uncertainty is
@@ -67,15 +67,15 @@ To Re-generate the results use the scripts from the `Experiment` directory.
 
 Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout
 --- | :---: | :---: | :---: | :---:
-Boston Housing      | -2.41 ± 0.25 | -2.68 ± 0.12 | 5.37 ± 0.32 | -2.40 ± 0.04
-Concrete Strength   | -3.06 ± 0.18 | -3.33 ± 0.19 | 6.21 ± 0.13 | -2.93 ± 0.02
-Energy Efficiency   | -1.38 ± 0.22 | -1.60 ± 0.77 | 5.27 ± 0.09 | -1.21 ± 0.01
-Kin8nm              | 1.20 ± 0.02 | 0.41 ± 0.02 | 0.46 ± 0.09 | 1.14 ± 0.01
-Naval Propulsion    | 5.63 ± 0.05 | 3.18 ± 0.28 | 0.58 ± 0.01 | 4.45 ± 0.00
-Power Plant         | -2.79 ± 0.04 | -3.2 ± 0.12 | 11.46 ± 0.01 | -2.80 ± 0.01
-Protein Structure   | -2.83 ± 0.02 | -3.66 ± 0.09 | 4.43 ± 0.19 | -2.87 ± 0.00
-Wine Quality Red    | -0.94 ± 0.12 | -0.97 ± 0.05 | 3.30 ± 1.32 | -0.93 ± 0.01
-Yacht Hydrodynamics | -1.18 ± 0.21 | -3.1 ± 0.7 | 8.96 ± 19.08 | -1.25 ± 0.01
+Boston Housing      | -2.41 ± 0.25 | -2.68 ± 0.12 | -2.90 ± 0.32 | -2.40 ± 0.04
+Concrete Strength   | -3.06 ± 0.18 | -3.33 ± 0.19 | -3.61 ± 0.50 | -2.93 ± 0.02
+Energy Efficiency   | -1.38 ± 0.22 | -1.60 ± 0.77 | -2.47 ± 0.28 | -1.21 ± 0.01
+Kin8nm              | 1.20 ± 0.02 | 0.41 ± 0.02 | 0.24 ± 0.11 | 1.14 ± 0.01
+Naval Propulsion    | 5.63 ± 0.05 | 3.18 ± 0.28 | 0.76 ± 0.01 | 4.45 ± 0.00
+Power Plant         | -2.79 ± 0.04 | -3.2 ± 0.12 | -5.4 ± 0.01 | -2.80 ± 0.01
+Protein Structure   | -2.83 ± 0.02 | -3.66 ± 0.09 | -5.89 ± 0.38 | -2.87 ± 0.00
+Wine Quality Red    | -0.94 ± 0.12 | -0.97 ± 0.05 | -1.31 ± 0.05 | -0.93 ± 0.01
+Yacht Hydrodynamics | -1.18 ± 0.21 | -3.1 ± 0.7 | -2.83 ± 1.87 | -1.25 ± 0.01
 
 We observe that our method is very close (or is competitive with) existing methods in terms of LL.
 On some datasets, we observe that our method is slightly worse in terms of LL. We believe that

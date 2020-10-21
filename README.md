@@ -65,17 +65,17 @@ We have used the identical setup as used by Gal and Ghahramani to evaluate MC-dr
 except for the protein dataset which uses 5 folds. A summary of the results is reported below (higher test log likelihood (LL) is better), using some standard dataset.
 To Re-generate the results use the scripts from the `Experiment` directory.
 
-Dataset | Deep Ensemble | MultiXGBoost | RandomXGBoost | MC Dropout
+Dataset | Deep Ensemble | MultiXGB | RandomXGB | MC Dropout | firstXGB
 --- | :---: | :---: | :---: | :---:
-Boston Housing      | -2.41 ± 0.25 | -2.68 ± 0.12 | -2.90 ± 0.32 | -2.40 ± 0.04
-Concrete Strength   | -3.06 ± 0.18 | -3.33 ± 0.19 | -3.61 ± 0.50 | -2.93 ± 0.02
-Energy Efficiency   | -1.38 ± 0.22 | -1.60 ± 0.77 | -2.47 ± 0.28 | -1.21 ± 0.01
-Kin8nm              | 1.20 ± 0.02 | 0.41 ± 0.02 | 0.24 ± 0.11 | 1.14 ± 0.01
-Naval Propulsion    | 5.63 ± 0.05 | 3.18 ± 0.28 | 0.76 ± 0.01 | 4.45 ± 0.00
-Power Plant         | -2.79 ± 0.04 | -3.2 ± 0.12 | -5.4 ± 0.01 | -2.80 ± 0.01
-Protein Structure   | -2.83 ± 0.02 | -3.66 ± 0.09 | -5.89 ± 0.38 | -2.87 ± 0.00
-Wine Quality Red    | -0.94 ± 0.12 | -0.97 ± 0.05 | -1.31 ± 0.05 | -0.93 ± 0.01
-Yacht Hydrodynamics | -1.18 ± 0.21 | -3.1 ± 0.7 | -2.83 ± 1.87 | -1.25 ± 0.01
+Boston Housing      | -2.41 ± 0.25 | -2.68 ± 0.12 | -2.90 ± 0.32 | -2.40 ± 0.04 | -2.77 ± 0.34
+Concrete Strength   | -3.06 ± 0.18 | -3.33 ± 0.19 | -3.61 ± 0.50 | -2.93 ± 0.02 | -3.6 ± 0.39
+Energy Efficiency   | -1.38 ± 0.22 | -1.60 ± 0.77 | -2.47 ± 0.28 | -1.21 ± 0.01 | -0.94 ± 0.34
+Kin8nm              | 1.20 ± 0.02 | 0.41 ± 0.02 | 0.24 ± 0.11 | 1.14 ± 0.01 | 0.35 ± 0.13
+Naval Propulsion    | 5.63 ± 0.05 | 3.18 ± 0.28 | 0.76 ± 0.01 | 4.45 ± 0.00 | 3.05 ± 0.17
+Power Plant         | -2.79 ± 0.04 | -3.2 ± 0.12 | -5.4 ± 0.01 | -2.80 ± 0.01 | -3.71 ± 0.00
+Protein Structure   | -2.83 ± 0.02 | -3.66 ± 0.09 | -5.89 ± 0.38 | -2.87 ± 0.00 | -5.61 ± 0.37
+Wine Quality Red    | -0.94 ± 0.12 | -0.97 ± 0.05 | -1.31 ± 0.05 | -0.93 ± 0.01 | -1.18 ± 0.08
+Yacht Hydrodynamics | -1.18 ± 0.21 | -3.1 ± 0.7 | -2.83 ± 1.87 | -1.25 ± 0.01 | -0.11 ± 0.34
 
 We observe that our method is very close (or is competitive with) existing methods in terms of LL.
 On some datasets, we observe that our method is slightly worse in terms of LL. We believe that

@@ -66,7 +66,7 @@ except for the protein dataset which uses 5 folds. A summary of the results is r
 To Re-generate the results use the scripts from the `Experiment` directory.
 
 Dataset | Deep Ensemble | MultiXGB | RandomXGB | MC Dropout | firstXGB
---- | :---: | :---: | :---: | :---:
+--- | :---: | :---: | :---: | :---: | :---:
 Boston Housing      | -2.41 ± 0.25 | -2.68 ± 0.12 | -2.90 ± 0.32 | -2.40 ± 0.04 | -2.77 ± 0.34
 Concrete Strength   | -3.06 ± 0.18 | -3.33 ± 0.19 | -3.61 ± 0.50 | -2.93 ± 0.02 | -3.6 ± 0.39
 Energy Efficiency   | -1.38 ± 0.22 | -1.60 ± 0.77 | -2.47 ± 0.28 | -1.21 ± 0.01 | -0.94 ± 0.34

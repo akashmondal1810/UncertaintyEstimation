@@ -59,6 +59,8 @@ field as the target label in classification setting and the profit rate for regr
 For our segment of intreset, the out of distribution or the uncertain segment, we have the data from 2020 quarter1 which include new types of loans like issued which is not present in the development data and also the shift in the distribution due to the global pandemic, COVID-19 situtation. The other uncertain segment is the loans with low FICO(FICO<500) values are considered. As the FICO score are below 500(which are in the range of below 579), hence these scores fall in the poor Score Ranges, and bad credit means higher risk hence higher uncertainty.
 
 ## Results
+### Regression
+
 #### Standard Datasets
 
 We have used the identical setup as used by Gal and Ghahramani to evaluate MC-dropout. Each dataset is split into 20 train-test folds,
@@ -81,6 +83,16 @@ We observe that our method is very close (or is competitive with) existing metho
 On some datasets, we observe that our method is slightly worse in terms of LL. We believe that
 this is due to the fact that our method is not optimizes for LL (which captures predictive uncertainty)
 instead of other optimization function like MSE, MAE etc.
+
+### Classification(AUC Score)
+
+#### Standard Datasets
+
+Dataset | NN | Laplace BNN 
+--- | :---: | :---: 
+Breast Cancer      | 0.99189 | 0.99122 
+Sonare   | 0.89876 | 0.91111
+
 
 #### The Loan Datasets
 We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.

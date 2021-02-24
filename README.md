@@ -95,12 +95,12 @@ Sonare   | 0.89876 | 0.91111
 
 
 #### The Loan Datasets
-We tested our system in two Uncertain segments, the AUC Score in listed below. Here the probabilistic models scores are by suppressing the 'uncertain' points. Hence the uncertainty estimation is very useful to avoid misclassification, relaxing our neural network to make a prediction when there’s not so much confidence.
+We tested our system in two Uncertain segments, segment#1(data from 2020Q1) and segment#2(data with Low FICO<500). The resulting AUC Score is listed below.
 
 Models | XGBoost | MC Dropout | Deep Ensemble | Multi XGB | Random XGB
 --- | --- | --- | --- | --- | --- 
-Uncertain Seg1(From 20Q1) | 60.2 | 68.4 | 77.2 | 81.8 | 72.3
-Uncertain Seg1(Low FICO<500) | 81.3 | 83.8 | 91.9 | 86.5 | 79.3
+segment#1 | - | - | - | - | 59.75
+segment#2 | - | - | - | - | 89.07
 
 ## Future Works
 * Making the tool scaleable

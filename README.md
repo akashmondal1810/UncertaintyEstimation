@@ -88,10 +88,10 @@ instead of other optimization function like MSE, MAE etc.
 
 #### Standard Datasets
 
-Dataset | NN | Laplace BNN 
---- | :---: | :---: 
-Breast Cancer      | 0.99189 | 0.99122 
-Sonare   | 0.89876 | 0.91111
+Dataset | NN | Laplace BNN | XGBoost 
+--- | :---: | :---: | :---: 
+Breast Cancer      | 0.992 | 0.991 | 0.993
+Sonare   | 0.899 | 0.911 | 0.931
 
 
 #### The Loan Datasets

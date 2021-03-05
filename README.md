@@ -84,14 +84,21 @@ On some datasets, we observe that our method is slightly worse in terms of LL. W
 this is due to the fact that our method is not optimizes for LL (which captures predictive uncertainty)
 instead of other optimization function like MSE, MAE etc.
 
-### Classification(AUC Score)
+### Classification
 
 #### Standard Datasets
 
+AUC score in some standard datasets given below:
 Dataset | NN | Laplace BNN | XGBoost 
 --- | :---: | :---: | :---: 
 Breast Cancer      | 0.992 | 0.991 | 0.993
-Sonare   | 0.899 | 0.911 | 0.931
+Sonare   | 0.899 | 0.928 | 0.931
+
+Time Consumption in second(Train time/ Test time):
+Dataset | NN | Laplace BNN | XGBoost 
+--- | :---: | :---: | :---: 
+Breast Cancer      | 9.0821/0.0002 | 9.2532/0.0234 | 0.0350/0.0056
+Sonare   | 8.8087/0.0002 | 8.8175/0.0352 | 0.0295/0.0090
 
 
 #### The Loan Datasets

@@ -79,6 +79,20 @@ Protein Structure   | -2.83 ± 0.02 | -3.66 ± 0.09 | -5.89 ± 0.38 | -2.87 ± 0
 Wine Quality Red    | -0.94 ± 0.12 | -0.97 ± 0.05 | -1.31 ± 0.05 | -0.93 ± 0.01 | -0.99 ± 0.098
 Yacht Hydrodynamics | -1.18 ± 0.21 | -3.1 ± 0.7 | -2.83 ± 1.87 | -1.25 ± 0.01 | -0.55 ± 0.24
 
+Time Consumption in second(Train time/Test time):
+
+Dataset | Deep Ensemble | MultiXGB | RandomXGB | MC Dropout | Catboost
+--- | :---: | :---: | :---: | :---: | :---:
+Boston Housing      | - | 3.4938 ± 0.5507/0.1448 ± 0.0501 | - | - | 0.3346 ± 0.0658/0.0032 ± 0.0006
+Concrete Strength   | - | 2.3788 ± 0.3227/0.1158 ± 0.0318 | - | - | 0.3765 ± 0.1302/0.0042 ± 0.0041
+Energy Efficiency   | - | 3.0059 ± 0.9319/0.1449 ± 0.04210 | - | - | 0.277 ± 0.0252/0.0025 ± 0.0010
+Kin8nm              | - | 23.1881 ± 1.5528/0.2369 ± 0.0299 | - | - | 0.4678 ± 0.0697/0.01356 ± 0.0024
+Naval Propulsion    | - | 33.3201 ± 2.6609/0.2247 ± 0.0270 | - | - | 0.5532 ± 0.0589/0.0218 ± 0.0027
+Power Plant         | - | 21.5622 ± 4.0954/0.2290 ± 0.0687 | - | - | 0.4550 ± 0.0262/0.0100 ± 0.0024
+Protein Structure   | - | 41.9296 ± 1.5878/0.2977 ± 0.01126 | - | - | 1.0143 ± 0.0357/0.0361 ± 0.0024
+Wine Quality Red    | - | 6.7160 ± 1.1953/0.1356 ± 0.01548 | - | - | 0.3936 ± 0.137/0.0054 ± 0.0025
+Yacht Hydrodynamics | - | 1.8915 ± 0.5307/0.1613 ± 0.0435 | - | - | 0.2852 ± 0.0371/0.003 ± 0.001
+
 We observe that our method is very close (or is competitive with) existing methods in terms of LL.
 On some datasets, we observe that our method is slightly worse in terms of LL. We believe that
 this is due to the fact that our method is not optimizes for LL (which captures predictive uncertainty)
